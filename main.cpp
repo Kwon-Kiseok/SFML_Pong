@@ -1,13 +1,20 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "Bat.h"
 #include "Ball.h"
+#include "BlockManager.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Pong!", sf::Style::Fullscreen);
     Bat bat(1920.f * 0.5f, 1080.f - 20.f);
     Ball ball(1920.f * 0.5f, 0.f);
-
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            BlockManager::GetInstance()->CreateBlock(j * 150.f + 400.f, i * 100);
+        }
+    }
     // bool prevColSide = false;
     // bool prevColTop = false;
     // bool prevColBat = false;
@@ -85,6 +92,7 @@ int main()
         window.clear();
         window.draw(bat.GetShape());
         window.draw(ball.GetShape());
+        BlockManager::GetInstance()->DrawBlock(&window);
         window.display();
     }
 

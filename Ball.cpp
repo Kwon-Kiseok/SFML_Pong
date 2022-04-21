@@ -2,8 +2,12 @@
 #include <cmath>
 #include <iostream>
 
+Ball::Ball()
+{
+}
+
 Ball::Ball(float x, float y)
-	:position(x, y), originPos(x, y)
+	:Object(x, y), originPos(x, y)
 {
 	dir.x = 1.f;
 	dir.y = 1.f;
@@ -15,7 +19,7 @@ Ball::Ball(float x, float y)
 
 
 	shape.setSize(Vector2f(10, 10));
-	shape.setPosition(position);
+	//shape.setPosition(position);
 	shape.setFillColor(Color::White);
 }
 
@@ -23,14 +27,18 @@ Ball::~Ball()
 {
 }
 
-FloatRect Ball::GetGlobalBounds()
+Ball::Ball(const Ball& copy)
+	:Object(copy), originPos(copy.originPos), speed(copy.speed), dir(copy.dir)
 {
-	return shape.getGlobalBounds();
 }
 
-const RectangleShape& Ball::GetShape()
+Ball& Ball::operator=(const Ball& ref)
 {
-	return shape;
+	Object::operator=(ref);
+	originPos = ref.originPos;
+	speed = ref.speed;
+	dir = ref.dir;
+	return *this;
 }
 
 void Ball::ReboundSides()
