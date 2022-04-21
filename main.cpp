@@ -3,18 +3,23 @@
 #include "Ball.h"
 #include "BlockManager.h"
 
+#include <iostream>
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Pong!", sf::Style::Fullscreen);
     Bat bat(1920.f * 0.5f, 1080.f - 20.f);
     Ball ball(1920.f * 0.5f, 0.f);
+    
+    Color colors[5] = { Color::White, Color::Blue, Color::Green, Color::Cyan, Color::Magenta };
     for (int i = 0; i < 5; i++)
     {
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < 9; j++)
         {
-            BlockManager::GetInstance()->CreateBlock(j * 150.f + 400.f, i * 100);
+            BlockManager::GetInstance()->CreateBlock(j * 203.f + 50.f, i * 53.f + 50.f, colors[i]);
         }
     }
+    
     // bool prevColSide = false;
     // bool prevColTop = false;
     // bool prevColBat = false;
@@ -79,6 +84,25 @@ int main()
             ball.ReboundBatOrTop();
         }
 
+        for (auto i = 0; i < BlockManager::GetInstance()->GetVector().size(); i++)
+        {
+            if (ballBound.intersects(BlockManager::GetInstance()->GetBlocksBound(i)) && !prevBallBound.intersects(BlockManager::GetInstance()->GetBlocksBound(i)))
+            {
+                if (ballBound.left < BlockManager::GetInstance()->GetBlocksBound(i).left
+                    || ballBound.left + ballBound.width > BlockManager::GetInstance()->GetBlocksBound(i).left + BlockManager::GetInstance()->GetBlocksBound(i).width)
+                {
+                    ball.ReboundSides();
+                }
+                else if(ballBound.top < BlockManager::GetInstance()->GetBlocksBound(i).top
+                    || ballBound.top + ballBound.height > BlockManager::GetInstance()->GetBlocksBound(i).top + BlockManager::GetInstance()->GetBlocksBound(i).height)
+                    ball.ReboundBatOrTop();
+                
+
+                std::cout << i << "번째 블럭이랑 충돌" << std::endl;
+
+                BlockManager::GetInstance()->DeleteBlock(i);
+            }
+        }
         if ((ballBound.top + ballBound.height > windowSize.y) && (prevBallBound.top + prevBallBound.height < windowSize.y))
         {
             ball.ReboundBottom();
@@ -96,5 +120,6 @@ int main()
         window.display();
     }
 
+    BlockManager::GetInstance()->DeleteBlocks();
     return 0;
 }

@@ -8,11 +8,11 @@ Block::~Block()
 {
 }
 
-Block::Block(float x, float y)
+Block::Block(float x, float y, Color color)
 	:Object(x, y)
 {
-	shape.setSize(Vector2f(100, 30));
-	shape.setFillColor(Color::Red);
+	shape.setSize(Vector2f(200, 50));
+	shape.setFillColor(color);
 }
 
 Block::Block(const Block& copy)

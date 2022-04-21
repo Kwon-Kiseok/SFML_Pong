@@ -16,8 +16,11 @@ public:
 	BlockManager();
 	~BlockManager();
 
-	void CreateBlock(float x, float y);
+	void CreateBlock(float x, float y, sf::Color color);
 	void DrawBlock(sf::RenderWindow* window);
+	void DeleteBlocks();
+	void DeleteBlock(int idx);
 	vector<Block*> GetVector();
+	sf::FloatRect GetBlocksBound(int idx);
 };
 
