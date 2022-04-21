@@ -13,8 +13,6 @@ private:
 	vector<Block*> blockVector;
 
 public:
-	BlockManager();
-	~BlockManager();
 
 	void CreateBlock(float x, float y, sf::Color color);
 	void DrawBlock(sf::RenderWindow* window);

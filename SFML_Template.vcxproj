@@ -154,6 +154,7 @@
     <ClCompile Include="BlockManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="BlockManager.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="UIManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

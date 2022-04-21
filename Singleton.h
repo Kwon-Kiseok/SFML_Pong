@@ -5,18 +5,19 @@ class Singleton
 {
 protected:
 	Singleton() {}
-	virtual ~Singleton() {}
+	~Singleton() {}
+	static T* instance;
 
 public:
 	static T* GetInstance()
 	{
 		if (nullptr == instance)
 		{
-			instance = new T();
+			instance = new T;
 		}
 		return instance;
 	}
-	static void DestroyInstance()
+	void DestroyInstance()
 	{
 		if (nullptr != instance)
 		{
@@ -24,9 +25,6 @@ public:
 			instance = nullptr;
 		}
 	}
-
-private:
-	static T* instance;
 };
 
 template<typename T>

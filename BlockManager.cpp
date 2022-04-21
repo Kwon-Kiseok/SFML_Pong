@@ -1,14 +1,6 @@
 #include "BlockManager.h"
 #include "Block.h"
 
-BlockManager::BlockManager()
-	: countBlock(0)
-{
-}
-
-BlockManager::~BlockManager()
-{
-}
 
 void BlockManager::CreateBlock(float x, float y, sf::Color color)
 {

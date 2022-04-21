@@ -10,7 +10,7 @@ Ball::Ball(float x, float y)
 	:Object(x, y), originPos(x, y)
 {
 	dir.x = 1.f;
-	dir.y = 1.f;
+	dir.y = -1.f;
 	
 	// 단위벡터로 노말라이즈
 	float length = sqrt(dir.x * dir.x + dir.y * dir.y);
@@ -55,6 +55,12 @@ void Ball::ReboundBottom()
 {
 	std::cout << position.y << std::endl;
 	position = originPos;
+}
+
+void Ball::SetXY(float x, float y)
+{
+	position.x = x;
+	position.y = y;
 }
 
 void Ball::Update(float dt)

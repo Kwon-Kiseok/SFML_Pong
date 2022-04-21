@@ -19,7 +19,7 @@ public:
 	void ReboundSides();
 	void ReboundBatOrTop();
 	void ReboundBottom();
-
+	void SetXY(float x, float y);
 	void Update(float dt);
 };
 
