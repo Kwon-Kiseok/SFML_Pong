@@ -1,11 +1,9 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include "Object.h"
 // 그리기: RectangleShape 
 // 이동
 	// 왼쪽, 오른쪽
 	// 속도, 시간
-
-using namespace sf;
 
 enum class Sides
 {
@@ -14,21 +12,18 @@ enum class Sides
 	NONE
 };
 
-class Bat
+class Bat : public Object
 {
 private:
-	Vector2f position;
-	RectangleShape shape;
 	float speed = 1000.f;
 	Sides moveDir = Sides::NONE;
 
 public:
-	Bat(float x, float y);
+	Bat();
 	~Bat();
-
-	FloatRect GetGlobalBounds();
-	const RectangleShape& GetShape();
-
+	Bat(float x, float y);
+	Bat(const Bat& copy);
+	Bat& operator=(const Bat& ref);
 	void SetMoveDir(Sides side);
 	void Update(float dt);
 };

@@ -1,29 +1,25 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include "Object.h"
 
-using namespace sf;
-
-class Ball
+class Ball : public Object
 {
 private:
 	Vector2f originPos;
-	Vector2f position;
-	RectangleShape shape;
 
 	float speed = 500.f;
 	Vector2f dir;
 
 public:
+	Ball();
 	Ball(float x, float y);
 	~Ball();
-
-	FloatRect GetGlobalBounds();
-	const RectangleShape& GetShape();
+	Ball(const Ball& copy);
+	Ball& operator=(const Ball& ref);
 
 	void ReboundSides();
 	void ReboundBatOrTop();
 	void ReboundBottom();
-
+	void SetXY(float x, float y);
 	void Update(float dt);
 };
 

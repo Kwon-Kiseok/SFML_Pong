@@ -1,25 +1,32 @@
 #include "Bat.h"
 
-Bat::Bat(float x, float y)
-	: position(x, y)
+
+Bat::Bat()
 {
-	shape.setSize(Vector2f(100, 5));
-	shape.setPosition(position);
-	shape.setFillColor(Color::White);
 }
 
 Bat::~Bat()
 {
 }
 
-FloatRect Bat::GetGlobalBounds()
+Bat::Bat(float x, float y)
+	:Object(x, y)
 {
-	return shape.getGlobalBounds();
+	shape.setSize(Vector2f(100, 10));
+	shape.setFillColor(Color::White);
 }
 
-const RectangleShape& Bat::GetShape()
+Bat::Bat(const Bat& copy)
+	:Object(copy), speed(copy.speed), moveDir(copy.moveDir)
 {
-	return shape;
+}
+
+Bat& Bat::operator=(const Bat& ref)
+{
+	Object::operator=(ref);
+	speed = ref.speed;
+	moveDir = ref.moveDir;
+	return *this;
 }
 
 void Bat::SetMoveDir(Sides side)
