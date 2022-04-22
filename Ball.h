@@ -20,6 +20,7 @@ public:
 	void ReboundBatOrTop();
 	void ReboundBottom();
 	void SetXY(float x, float y);
+	void SetSpeed(float add);
 	void Update(float dt);
 };
 

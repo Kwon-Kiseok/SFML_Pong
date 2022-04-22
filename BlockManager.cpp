@@ -22,7 +22,6 @@ void BlockManager::DeleteBlocks()
 
 void BlockManager::DeleteBlock(int idx)
 {
-
 	blockVector.erase(blockVector.begin() + idx);
 }
 

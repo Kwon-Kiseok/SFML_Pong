@@ -9,11 +9,9 @@ class Block;
 class BlockManager : public Singleton<BlockManager>
 {
 private:
-	int countBlock;
+	int countBlock = 0;
 	vector<Block*> blockVector;
-
 public:
-
 	void CreateBlock(float x, float y, sf::Color color);
 	void DrawBlock(sf::RenderWindow* window);
 	void DeleteBlocks();
