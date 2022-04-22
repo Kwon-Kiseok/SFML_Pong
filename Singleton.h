@@ -3,10 +3,10 @@
 template <typename T>
 class Singleton
 {
-protected:
+protected: // private:
 	Singleton() {}
 	~Singleton() {}
-	static T* instance;
+	static T* instance; // ΩÃ±€≈œ ≈¨∑°Ω∫¿« ∞¥√º
 
 public:
 	static T* GetInstance()

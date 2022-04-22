@@ -25,6 +25,7 @@ public:
 	Bat(const Bat& copy);
 	Bat& operator=(const Bat& ref);
 	void SetMoveDir(Sides side);
+	void SetSize(float add);
 	void Update(float dt);
 };
 

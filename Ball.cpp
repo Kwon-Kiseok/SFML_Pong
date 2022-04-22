@@ -17,9 +17,7 @@ Ball::Ball(float x, float y)
 	dir.x /= length;
 	dir.y /= length;
 
-
 	shape.setSize(Vector2f(10, 10));
-	//shape.setPosition(position);
 	shape.setFillColor(Color::White);
 }
 
@@ -61,6 +59,13 @@ void Ball::SetXY(float x, float y)
 {
 	position.x = x;
 	position.y = y;
+	dir.x *= -1.f;
+	dir.y *= -1.f;
+}
+
+void Ball::SetSpeed(float add)
+{
+	speed += add;
 }
 
 void Ball::Update(float dt)

@@ -34,6 +34,11 @@ void Bat::SetMoveDir(Sides side)
 	moveDir = side;
 }
 
+void Bat::SetSize(float add)
+{
+	shape.setSize(Vector2f(shape.getSize().x + add, shape.getSize().y));
+}
+
 void Bat::Update(float dt)
 {
 	Vector2f dir;

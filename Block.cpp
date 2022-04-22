@@ -25,8 +25,3 @@ Block& Block::operator=(const Block& ref)
 	Object::operator=(ref);
 	return *this;
 }
-
-void Block::Update()
-{
-
-}
